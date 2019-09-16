@@ -10,8 +10,9 @@ import { MoviePage } from './components/movie-page/movie-page.component';
 const App = () => {
   const [savedList, setSavedList] = useState<Movie[]>([]);
 
-  const addToSavedList = (movie: Movie) => {
-    setSavedList([...savedList, movie]);
+  const addToSavedList = (movie: Movie | undefined) => {
+    if (movie !== undefined && !savedList.find(item => movie.title === item.title))
+      setSavedList([...savedList, movie]);
   };
 
   return (
@@ -19,7 +20,10 @@ const App = () => {
       <SavedList list={savedList} />
       <Switch>
         <Route exact path='/' component={MovieList} />
-        <Route path='/movies/:id' component={MoviePage} />
+        <Route
+          path='/movies/:id'
+          component={(props: any) => <MoviePage {...props} addToSavedList={addToSavedList} />}
+        />
       </Switch>
     </Router>
   );

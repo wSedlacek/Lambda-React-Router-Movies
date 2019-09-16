@@ -5,13 +5,13 @@ import { Movie } from '../../model/Movie';
 import { Match } from '../../model/Route';
 import { MovieService } from '../../services/movies.service';
 
-interface MatchParams {
+export interface MoviePageParams {
   id: string;
 }
 
 const MoviePage = (props: {
-  addToSavedList: (movie: Movie) => void;
-  match: Match<MatchParams>;
+  addToSavedList: (movie: Movie | undefined) => void;
+  match: Match<MoviePageParams>;
 }) => {
   const [movie, setMovie] = useState<Movie>();
 
@@ -19,11 +19,10 @@ const MoviePage = (props: {
     MovieService.getMovie(props.match.params.id).then(setMovie);
   }, [props]);
 
-  // Uncomment this only when you have moved on to the stretch goals
-  // const saveMovie = () => {
-  //   const addToSavedList = props.addToSavedList;
-  //   addToSavedList(movie)
-  // }
+  const saveMovie = () => {
+    const addToSavedList = props.addToSavedList;
+    addToSavedList(movie);
+  };
 
   if (!movie) {
     return <div>Loading movie information...</div>;
@@ -32,7 +31,9 @@ const MoviePage = (props: {
   return (
     <div className='save-wrapper'>
       <MovieCard movie={movie} />
-      <div className='save-button'>Save</div>
+      <div className='save-button' onClick={saveMovie}>
+        Save
+      </div>
     </div>
   );
 };
