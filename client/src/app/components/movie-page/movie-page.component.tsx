@@ -2,14 +2,21 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import { Movie } from '../../model/Movie';
+import { Match } from '../../model/Route';
 
-const MoviePage = (props: { addToSavedList: (movie: Movie) => void }) => {
+interface MatchParams {
+  id: string;
+}
+
+const MoviePage = (props: {
+  addToSavedList: (movie: Movie) => void;
+  match: Match<MatchParams>;
+}) => {
   const [movie, setMovie] = useState<Movie>();
 
   useEffect(() => {
-    const id = 1;
-    // change ^^^ that line and grab the id from the URL
-    // You will NEED to add a dependency array to this effect hook
+    const id = props.match.params.id;
+    console.log(props);
 
     axios
       .get(`http://localhost:5000/api/movies/${id}`)
@@ -19,7 +26,7 @@ const MoviePage = (props: { addToSavedList: (movie: Movie) => void }) => {
       .catch(error => {
         console.error(error);
       });
-  }, []);
+  }, [props]);
 
   // Uncomment this only when you have moved on to the stretch goals
   // const saveMovie = () => {
