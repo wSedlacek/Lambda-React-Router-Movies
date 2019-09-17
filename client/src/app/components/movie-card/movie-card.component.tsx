@@ -1,13 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import { Movie } from '../../model/Movie';
 
-const MovieCard = (props: { movie: Movie }) => {
+const MovieCard = (props: { movie: Movie; children?: React.ReactNode }) => {
   const { title, director, metascore, stars, id } = props.movie;
+  const children = props.children;
 
   return (
-    <Link to={`/movies/${id}`}>
+    <NavLink to={`/movies/${id}`}>
       <div className='movie-card'>
         <h2>{title}</h2>
         <div className='movie-director'>
@@ -23,8 +24,10 @@ const MovieCard = (props: { movie: Movie }) => {
             {star}
           </div>
         ))}
+
+        {children}
       </div>
-    </Link>
+    </NavLink>
   );
 };
 
