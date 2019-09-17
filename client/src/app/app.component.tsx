@@ -19,10 +19,10 @@ const App = () => {
     <Router>
       <SavedList list={savedList} />
       <Switch>
-        <Route exact path='/' component={MovieList} />
+        <Route exact path='/' render={() => <MovieList />} />
         <Route
           path='/movies/:id'
-          component={(props: any) => <MoviePage {...props} addToSavedList={addToSavedList} />}
+          render={props => <MoviePage {...props} addToSavedList={addToSavedList} />}
         />
       </Switch>
     </Router>
