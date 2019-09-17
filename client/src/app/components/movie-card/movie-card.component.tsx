@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import { Movie } from '../../model/Movie';
 
-const MovieCard = (props: { movie: Movie; children?: React.ReactNode }) => {
+export const MovieCard = (props: { movie: Movie; children?: React.ReactNode }) => {
   const { title, director, metascore, stars, id } = props.movie;
   const children = props.children;
 
@@ -30,5 +30,3 @@ const MovieCard = (props: { movie: Movie; children?: React.ReactNode }) => {
     </NavLink>
   );
 };
-
-export { MovieCard };

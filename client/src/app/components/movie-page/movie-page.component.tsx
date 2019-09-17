@@ -9,7 +9,7 @@ export interface MoviePageParams {
   id: string;
 }
 
-const MoviePage = (props: {
+export const MoviePage = (props: {
   addToSavedList: (movie: Movie | undefined) => void;
   match: Match<MoviePageParams>;
 }) => {
@@ -36,5 +36,3 @@ const MoviePage = (props: {
     </MovieCard>
   );
 };
-
-export { MoviePage };

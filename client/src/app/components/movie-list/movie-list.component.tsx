@@ -4,7 +4,7 @@ import { MovieCard } from '../movie-card/movie-card.component';
 import { Movie } from '../../model/Movie';
 import { MovieService } from '../../services/movies.service';
 
-const MovieList = () => {
+export const MovieList = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
   useEffect(() => {
     MovieService.getMovies().then(setMovies);
@@ -18,5 +18,3 @@ const MovieList = () => {
     </div>
   );
 };
-
-export { MovieList };

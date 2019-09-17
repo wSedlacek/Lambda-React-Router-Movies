@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import { Movie } from '../../model/Movie';
 
-const SavedList = (props: { list: Movie[] }) => (
+export const SavedList = (props: { list: Movie[] }) => (
   <div className='saved-list'>
     <h3>Saved Movies:</h3>
     {props.list.map(movie => (
@@ -16,5 +16,3 @@ const SavedList = (props: { list: Movie[] }) => (
     </NavLink>
   </div>
 );
-
-export { SavedList };

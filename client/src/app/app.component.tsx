@@ -7,7 +7,7 @@ import { MovieList } from './components/movie-list/movie-list.component';
 import { Movie } from './model/Movie';
 import { MoviePage } from './components/movie-page/movie-page.component';
 
-const App = () => {
+export const App = () => {
   const [savedList, setSavedList] = useState<Movie[]>([]);
 
   const addToSavedList = (movie: Movie | undefined) => {
@@ -28,5 +28,3 @@ const App = () => {
     </Router>
   );
 };
-
-export { App };
