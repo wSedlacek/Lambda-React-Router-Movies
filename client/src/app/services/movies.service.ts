@@ -13,7 +13,7 @@ export class MovieService {
       });
   }
 
-  static async getMovie(id: string) {
+  static async getMovie(id: number) {
     return await axios
       .get<Movie>(`http://localhost:5000/api/movies/${id}`)
       .then(response => response.data)

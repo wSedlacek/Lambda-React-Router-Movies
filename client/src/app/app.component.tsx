@@ -22,7 +22,7 @@ export const App = () => {
         <Route exact path='/' render={() => <MovieList />} />
         <Route
           path='/movies/:id'
-          render={props => <MoviePage {...props} addToSavedList={addToSavedList} />}
+          render={props => <MoviePage id={props.match.params.id} addToSavedList={addToSavedList} />}
         />
       </Switch>
     </Router>
